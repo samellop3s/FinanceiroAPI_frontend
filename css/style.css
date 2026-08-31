@@ -1,3 +1,50 @@
+/* CSS Variables - Light Mode (default) */
+:root {
+    --bg-body: #f4f7f6;
+    --bg-card: #ffffff;
+    --bg-input: #f8fafc;
+    --bg-input-focus: #ffffff;
+    --bg-table-even: #f8fafc;
+    --bg-table-hover: #f1f5f9;
+    --bg-thead: #00334e;
+    --text-primary: #1e293b;
+    --text-secondary: #334155;
+    --text-muted: #475569;
+    --text-label: #334155;
+    --text-input: #0f172a;
+    --border-color: #cbd5e1;
+    --border-table: #e2e8f0;
+    --heading-color: #00334e;
+    --shadow-card: rgba(0, 0, 0, 0.05);
+    --btn-secondary-bg: #ffffff;
+    --btn-secondary-hover: #f8fafc;
+    --btn-clear-hover: #f1f5f9;
+    --transition-speed: 0.3s;
+}
+
+/* CSS Variables - Dark Mode */
+[data-theme="dark"] {
+    --bg-body: #0f172a;
+    --bg-card: #1e293b;
+    --bg-input: #334155;
+    --bg-input-focus: #3b4c63;
+    --bg-table-even: #253449;
+    --bg-table-hover: #2d3f56;
+    --bg-thead: #0c2133;
+    --text-primary: #e2e8f0;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-label: #cbd5e1;
+    --text-input: #f1f5f9;
+    --border-color: #475569;
+    --border-table: #334155;
+    --heading-color: #7dd3fc;
+    --shadow-card: rgba(0, 0, 0, 0.3);
+    --btn-secondary-bg: #1e293b;
+    --btn-secondary-hover: #253449;
+    --btn-clear-hover: #253449;
+}
+
 /* Reset */
 * {
     box-sizing: border-box;
@@ -7,39 +54,76 @@
 
 body {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #f4f7f6;
-    color: #1e293b;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
     line-height: 1.5;
     padding: 2rem;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 h1 {
     text-align: center;
-    color: #00334e; /* Azul corporativo */
+    color: var(--heading-color);
     margin-bottom: 1.5rem;
     font-size: 1.75rem;
     font-weight: 700;
+    transition: color var(--transition-speed) ease;
 }
 
-/* Botões Globais / Secundários (Ver pagamentos / Voltar) */
+/* ========== Botão Dark Mode ========== */
+.dark-mode-toggle {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 1000;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.35rem;
+    box-shadow: 0 2px 12px var(--shadow-card);
+    transition: all var(--transition-speed) ease;
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 4px 20px var(--shadow-card);
+}
+
+.dark-mode-toggle:active {
+    transform: scale(0.95);
+}
+
+.dark-mode-toggle .icon {
+    display: inline-block;
+    transition: transform 0.4s ease;
+    line-height: 1;
+}
+
+/* ========== Botões Globais / Secundários (Ver pagamentos / Voltar) ========== */
 body > button {
     display: block;
     margin: 0 auto 2rem auto;
-    background-color: #ffffff;
-    color: #475569;
-    border: 1px solid #cbd5e1;
+    background-color: var(--btn-secondary-bg);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
     padding: 0.6rem 1.2rem;
     border-radius: 6px;
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all var(--transition-speed) ease;
+    box-shadow: 0 1px 2px var(--shadow-card);
 }
 
 body > button:hover {
-    background-color: #f8fafc;
-    color: #0f172a;
+    background-color: var(--btn-secondary-hover);
+    color: var(--text-input);
     border-color: #94a3b8;
 }
 
@@ -48,14 +132,15 @@ body > button:focus {
     box-shadow: 0 0 0 3px rgba(0, 51, 78, 0.15);
 }
 
-/* Formulário */
+/* ========== Formulário ========== */
 #formPagamentos {
-    background-color: #ffffff;
+    background-color: var(--bg-card);
     max-width: 600px;
     margin: 0 auto;
     padding: 2.5rem;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px var(--shadow-card);
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 .campo {
@@ -66,8 +151,9 @@ body > button:focus {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    color: #334155;
+    color: var(--text-label);
     font-size: 0.9rem;
+    transition: color var(--transition-speed) ease;
 }
 
 .campo input[type="text"],
@@ -76,18 +162,18 @@ body > button:focus {
 .campo textarea {
     width: 100%;
     padding: 0.75rem 1rem;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     font-family: inherit;
     font-size: 0.95rem;
-    color: #0f172a;
-    background-color: #f8fafc;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    color: var(--text-input);
+    background-color: var(--bg-input);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 .campo input[type="file"] {
     padding: 0.6rem;
-    background-color: #ffffff;
+    background-color: var(--bg-card);
     cursor: pointer;
 }
 
@@ -96,7 +182,7 @@ body > button:focus {
     outline: none;
     border-color: #005f8a;
     box-shadow: 0 0 0 3px rgba(0, 95, 138, 0.15);
-    background-color: #ffffff;
+    background-color: var(--bg-input-focus);
 }
 
 .campo textarea {
@@ -104,7 +190,7 @@ body > button:focus {
     min-height: 100px;
 }
 
-/* Botões do Formulário */
+/* ========== Botões do Formulário ========== */
 #formPagamentos button {
     width: 100%;
     padding: 0.85rem;
@@ -134,13 +220,13 @@ body > button:focus {
 
 #formPagamentos button[onclick="limparFormulario()"] {
     background-color: transparent;
-    color: #64748b;
-    border: 1px solid #cbd5e1;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
 }
 
 #formPagamentos button[onclick="limparFormulario()"]:hover {
-    background-color: #f1f5f9;
-    color: #334155;
+    background-color: var(--btn-clear-hover);
+    color: var(--text-secondary);
 }
 
 #formPagamentos button[onclick="limparFormulario()"]:focus {
@@ -148,22 +234,24 @@ body > button:focus {
     box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.15);
 }
 
-/* Tabela */
+/* ========== Tabela ========== */
 #tabelaPagamentos {
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
     border-collapse: collapse;
-    background-color: #ffffff;
+    background-color: var(--bg-card);
     border-radius: 12px;
     overflow: hidden; /* Mantém os cantos arredondados */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px var(--shadow-card);
     font-size: 0.9rem;
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 #tabelaPagamentos thead {
-    background-color: #00334e; /* Azul corporativo */
+    background-color: var(--bg-thead);
     color: #ffffff;
+    transition: background-color var(--transition-speed) ease;
 }
 
 #tabelaPagamentos th {
@@ -175,19 +263,20 @@ body > button:focus {
 
 #tabelaPagamentos td {
     padding: 1rem;
-    border-bottom: 1px solid #e2e8f0;
-    color: #334155;
+    border-bottom: 1px solid var(--border-table);
+    color: var(--text-secondary);
     vertical-align: middle;
+    transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
 
 /* Zebra striping */
 #tabelaPagamentos tbody tr:nth-child(even) {
-    background-color: #f8fafc;
+    background-color: var(--bg-table-even);
 }
 
 /* Hover na linha da tabela */
 #tabelaPagamentos tbody tr:hover {
-    background-color: #f1f5f9;
+    background-color: var(--bg-table-hover);
 }
 
 /* Badge / Botão de anexo na tabela */
@@ -208,7 +297,7 @@ body > button:focus {
     background-color: #0284c7;
 }
 
-/* Responsivo */
+/* ========== Responsivo ========== */
 @media (max-width: 768px) {
     body {
         padding: 1rem;
@@ -223,5 +312,13 @@ body > button:focus {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
+    }
+
+    .dark-mode-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+        top: 0.75rem;
+        right: 0.75rem;
     }
 }
