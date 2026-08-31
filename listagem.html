@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Pagamentos Cadastrados - Financeiro</title>
+</head>
+
+<body>
+    <h1>Pagamentos Cadastrados</h1>
+
+    <table id="tabelaPagamentos">
+        <thead>
+            <tr>
+                <th>Razão Social do Pagador</th>
+                <th>CNPJ do Pagador</th>
+                <th>Fornecedor</th>
+                <th>CNPJ do Fornecedor</th>
+                <th>Valor Total</th>
+                <th>Vencimento</th>
+                <th>Observações</th>
+                <th>Anexo</th>
+            </tr>
+        </thead>
+        <tbody id="corpoTabela">
+            <!-- As linhas vão ser inseridas aqui via JavaScript -->
+        </tbody>
+    </table><br><br>
+    <button type="button" onclick="window.location.href='index.html'">Voltar para o cadastro</button>
+
+    <script src="js/listagem.js"></script>
+</body>
+
+</html>

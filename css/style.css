@@ -1,0 +1,227 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #1e293b;
+    line-height: 1.5;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    color: #00334e; /* Azul corporativo */
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+/* Botões Globais / Secundários (Ver pagamentos / Voltar) */
+body > button {
+    display: block;
+    margin: 0 auto 2rem auto;
+    background-color: #ffffff;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+body > button:hover {
+    background-color: #f8fafc;
+    color: #0f172a;
+    border-color: #94a3b8;
+}
+
+body > button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 51, 78, 0.15);
+}
+
+/* Formulário */
+#formPagamentos {
+    background-color: #ffffff;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.campo {
+    margin-bottom: 1.5rem;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.9rem;
+}
+
+.campo input[type="text"],
+.campo input[type="date"],
+.campo input[type="file"],
+.campo textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #0f172a;
+    background-color: #f8fafc;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo input[type="file"] {
+    padding: 0.6rem;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: #005f8a;
+    box-shadow: 0 0 0 3px rgba(0, 95, 138, 0.15);
+    background-color: #ffffff;
+}
+
+.campo textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Botões do Formulário */
+#formPagamentos button {
+    width: 100%;
+    padding: 0.85rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+#formPagamentos button[onclick="salvarPagamento()"] {
+    background-color: #16a34a; /* Destaque positivo */
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    margin-top: 1rem;
+}
+
+#formPagamentos button[onclick="salvarPagamento()"]:hover {
+    background-color: #15803d;
+}
+
+#formPagamentos button[onclick="salvarPagamento()"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.3);
+}
+
+#formPagamentos button[onclick="limparFormulario()"] {
+    background-color: transparent;
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+}
+
+#formPagamentos button[onclick="limparFormulario()"]:hover {
+    background-color: #f1f5f9;
+    color: #334155;
+}
+
+#formPagamentos button[onclick="limparFormulario()"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.15);
+}
+
+/* Tabela */
+#tabelaPagamentos {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; /* Mantém os cantos arredondados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    font-size: 0.9rem;
+}
+
+#tabelaPagamentos thead {
+    background-color: #00334e; /* Azul corporativo */
+    color: #ffffff;
+}
+
+#tabelaPagamentos th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+#tabelaPagamentos td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+    vertical-align: middle;
+}
+
+/* Zebra striping */
+#tabelaPagamentos tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+/* Hover na linha da tabela */
+#tabelaPagamentos tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* Badge / Botão de anexo na tabela */
+#tabelaPagamentos a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background-color: #0ea5e9;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+    text-align: center;
+}
+
+#tabelaPagamentos a:hover {
+    background-color: #0284c7;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    #formPagamentos {
+        padding: 1.5rem;
+    }
+
+    /* Permite rolagem horizontal na tabela sem quebrar o layout */
+    #tabelaPagamentos {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
