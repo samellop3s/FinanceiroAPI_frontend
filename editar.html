@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Editar pagamento - Financeiro</title>
+</head>
+
+<body>
+    <button id="btnDarkMode" class="dark-mode-toggle" title="Alternar modo escuro">
+        <span class="icon">🌙</span>
+    </button>
+    <script src="js/darkmode.js"></script>
+
+    <h1>Editar pagamento - Financeiro</h1>
+
+
+
+
+    <form id="formPagamentos">
+        <div class="campo">
+            <label for="razaoSocialPagador">Razão social do pagador:</label>
+            <input type="text" id="razaoSocialPagador" name="razaoSocialPagador" maxlength="150" required>
+        </div>
+        <div class="campo">
+            <label for="cnpjPagador">Cnpj do pagador:</label>
+            <input type="text" id="cnpjPagador" name="cnpjPagador" maxlength="18" placeholder="00.000.000/0000-00"
+                required>
+        </div>
+        <div class="campo">
+            <label for="fornecedor">Fornecedor:</label>
+            <input type="text" id="fornecedor" name="fornecedor" maxlength="150" required>
+        </div>
+        <div class="campo">
+            <label for="cnpjFornecedor">Cnpj do fornecedor:</label>
+            <input type="text" id="cnpjFornecedor" name="cnpjFornecedor" maxlength="18" placeholder="00.000.000/0000-00"
+                required>
+        </div>
+        <div class="campo">
+            <label for="valorTotal">Valor total:</label>
+            <input type="text" id="valorTotal" name="valorTotal" placeholder="0,00" required>
+        </div>
+        <div class="campo">
+            <label for="dataVencimento">Data de vencimento:</label>
+            <input type="date" id="dataVencimento" name="dataVencimento" required>
+        </div>
+        <div class="campo">
+            <label for="observacoes">Observação:</label>
+            <textarea id="observacoes" name="observacoes" maxlength="500" rows="4"></textarea>
+        </div>
+        <div class="campo">
+            <label for="anexo">Anexar arquivo:</label>
+            <input type="file" id="anexo" name="anexo">
+        </div>
+        <button type="button" onclick="atualizarPagamento()">Atualizar</button>
+        <button type="button" onclick="limparFormulario()">Limpar</button><br><br>
+        <button type="button" onclick="window.location.href='listagem.html'">Ver pagamentos cadastrados</button>
+    </form>
+
+    <script src="js/editar.js"></script>
+</body>
+
+</html>
