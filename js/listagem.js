@@ -1,4 +1,4 @@
-const urlDownload = `https://financeiro-api-lopes-h7hcgub8f3aggmdn.centralus-01.azurewebsites.net/api/Pagamentos/anexo/${encodeURIComponent(nomeArquivo)}`;
+const URL_API = "https://financeiro-api-lopes-h7hcgub8f3aggmdn.centralus-01.azurewebsites.net/api/Pagamentos";
 
 async function carregarPagamentos() {
     const corpoTabela = document.getElementById("corpoTabela");
@@ -61,7 +61,7 @@ function gerarLinkAnexo(caminhoCompleto) {
     if (!caminhoCompleto) return "Sem anexo";
 
     const nomeArquivo = caminhoCompleto.split(/[\\/]/).pop();
-    const urlDownload = `https://localhost:7106/api/Pagamentos/anexo/${encodeURIComponent(nomeArquivo)}`;
+    const urlDownload = `https://financeiro-api-lopes-h7hcgub8f3aggmdn.centralus-01.azurewebsites.net/api/Pagamentos/anexo/${encodeURIComponent(nomeArquivo)}`;
 
     return `<a href="${urlDownload}" target="_blank">Baixar anexo</a>`;
 }
