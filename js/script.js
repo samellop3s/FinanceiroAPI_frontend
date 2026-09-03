@@ -1,4 +1,4 @@
-const URL_API = "https://localhost:7106/api/Pagamentos";
+const URL_API = "https://financeiro-api-lopes-h7hcgub8f3aggmdn.centralus-01.azurewebsites.net/api/Pagamentos";
 /*a palavra async antes de function avisa o JavaScript que 
 essa função vai fazer operações que demoram (como chamar um servidor pela internet) e que ela pode "pausar" em certos pontos 
 sem travar a página inteira enquanto espera a resposta. 

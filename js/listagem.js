@@ -1,4 +1,4 @@
-const URL_API = "https://localhost:7106/api/Pagamentos";
+const URL_API = "https://financeiro-api-lopes-h7hcgub8f3aggmdn.centralus-01.azurewebsites.net/api/Pagamentos";
 
 async function carregarPagamentos() {
     const corpoTabela = document.getElementById("corpoTabela");
