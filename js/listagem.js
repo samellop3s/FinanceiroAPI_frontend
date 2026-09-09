@@ -1,10 +1,10 @@
-const URL_API = "https://financeiro-api-lopes-h7hcgub8f3aggmdn.centralus-01.azurewebsites.net/api/Pagamentos";
+const API_ENDPOINT = "/api/pagamentos"; // Proxy endpoint
 
 async function carregarPagamentos() {
     const corpoTabela = document.getElementById("corpoTabela");
 
     try {
-        const resposta = await fetch(URL_API);
+        const resposta = await fetch(API_ENDPOINT);
 
         if (!resposta.ok) {
             corpoTabela.innerHTML = "<tr><td colspan='9'>Erro ao carregar os pagamentos.</td></tr>";
@@ -65,7 +65,7 @@ function gerarLinkAnexo(caminhoCompleto) {
     if (!caminhoCompleto) return "Sem anexo";
 
     const nomeArquivo = caminhoCompleto.split(/[\\/]/).pop();
-    const urlDownload = `https://financeiro-api-lopes-h7hcgub8f3aggmdn.centralus-01.azurewebsites.net/api/Pagamentos/anexo/${encodeURIComponent(nomeArquivo)}`;
+    const urlDownload = `${API_ENDPOINT}/anexo/${encodeURIComponent(nomeArquivo)}`;
 
     return `<a href="${urlDownload}" target="_blank">Baixar anexo</a>`;
 }
@@ -79,7 +79,7 @@ async function excluirPagamento(id) {
     if (!confirmacao) return;
 
     try {
-        const resposta = await fetch(`${URL_API}/${id}`, { method: "DELETE" });
+        const resposta = await fetch(`${API_ENDPOINT}/${id}`, { method: "DELETE" });
 
         if (resposta.ok) {
             alert("Pagamento excluído com sucesso!");
