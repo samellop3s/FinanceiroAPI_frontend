@@ -1,4 +1,4 @@
-const API_ENDPOINT = "/api/pagamentos"; // Proxy endpoint
+const URL_API = "https://financeiro-api-lopes-h7hcgub8f3aggmdn.centralus-01.azurewebsites.net/api/Pagamentos";
 
 function obterIdDaUrl() {
     const parametros = new URLSearchParams(window.location.search);
@@ -15,7 +15,7 @@ async function carregarDadosParaEdicao() {
     }
 
     try {
-        const resposta = await fetch(`${API_ENDPOINT}/${id}`);
+        const resposta = await fetch(`${URL_API}/${id}`);
 
         if (!resposta.ok) {
             alert("Pagamento não encontrado.");
@@ -59,7 +59,7 @@ async function atualizarPagamento() {
     }
 
     try {
-        const resposta = await fetch(`${API_ENDPOINT}/${id}`, {
+        const resposta = await fetch(`${URL_API}/${id}`, {
             method: "PUT",
             body: formData
         });
