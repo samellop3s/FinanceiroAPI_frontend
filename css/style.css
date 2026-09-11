@@ -1,73 +1,101 @@
-/* CSS Variables - Light Mode (default) */
+/* ================================================================
+   style.css — Visual unificado do sistema Financeiro
+   Reutiliza a mesma paleta, tipografia e tokens de login.css
+   ================================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ========== Design Tokens (idênticos a login.css) ========== */
 :root {
-    --bg-body: #f4f7f6;
-    --bg-card: #ffffff;
-    --bg-input: #f8fafc;
-    --bg-input-focus: #ffffff;
-    --bg-table-even: #f8fafc;
-    --bg-table-hover: #f1f5f9;
-    --bg-thead: #00334e;
-    --text-primary: #1e293b;
-    --text-secondary: #334155;
-    --text-muted: #475569;
-    --text-label: #334155;
-    --text-input: #0f172a;
-    --border-color: #cbd5e1;
-    --border-table: #e2e8f0;
-    --heading-color: #00334e;
-    --shadow-card: rgba(0, 0, 0, 0.05);
-    --btn-secondary-bg: #ffffff;
-    --btn-secondary-hover: #f8fafc;
-    --btn-clear-hover: #f1f5f9;
-    --transition-speed: 0.3s;
+    --bg-1: #0a1420;
+    --bg-2: #0d1b2a;
+    --panel: #132234cc;
+    --panel-solid: #132234;
+    --panel-border: #2a3f56;
+    --field: #0f1f30;
+    --field-border: #25415c;
+    --teal: #2fd9b8;
+    --blue: #3aa8ff;
+    --green: #22b455;
+    --green-2: #1a8f43;
+    --red: #e54545;
+    --red-2: #c03030;
+    --text-white: #eaf2f8;
+    --text-dim: #7f97ad;
+    --text-mid: #a9bdd1;
+    --text-label: #cdd9e4;
+    --shadow-card: rgba(0, 0, 0, 0.45);
 }
 
-/* CSS Variables - Dark Mode */
-[data-theme="dark"] {
-    --bg-body: #0f172a;
-    --bg-card: #1e293b;
-    --bg-input: #334155;
-    --bg-input-focus: #3b4c63;
-    --bg-table-even: #253449;
-    --bg-table-hover: #2d3f56;
-    --bg-thead: #0c2133;
-    --text-primary: #e2e8f0;
-    --text-secondary: #cbd5e1;
-    --text-muted: #94a3b8;
-    --text-label: #cbd5e1;
-    --text-input: #f1f5f9;
-    --border-color: #475569;
-    --border-table: #334155;
-    --heading-color: #7dd3fc;
-    --shadow-card: rgba(0, 0, 0, 0.3);
-    --btn-secondary-bg: #1e293b;
-    --btn-secondary-hover: #253449;
-    --btn-clear-hover: #253449;
-}
-
-/* Reset */
+/* ========== Reset ========== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* ========== Body ========== */
 body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: var(--bg-body);
-    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 15% 85%, rgba(47, 217, 184, 0.08), transparent 45%),
+        radial-gradient(circle at 85% 15%, rgba(58, 168, 255, 0.10), transparent 45%),
+        linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    color: var(--text-white);
     line-height: 1.5;
     padding: 2rem;
-    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
+/* ========== Navegação ========== */
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 2rem;
+}
+
+.nav-bar a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-bar a:hover {
+    color: var(--teal);
+    border-color: var(--panel-border);
+    background: rgba(47, 217, 184, 0.06);
+}
+
+.nav-bar a.active {
+    color: var(--teal);
+    border-color: var(--teal);
+    background: rgba(47, 217, 184, 0.08);
+}
+
+.nav-bar .separator {
+    color: var(--panel-border);
+    font-size: 14px;
+    user-select: none;
+}
+
+/* ========== Títulos ========== */
 h1 {
     text-align: center;
-    color: var(--heading-color);
-    margin-bottom: 1.5rem;
-    font-size: 1.75rem;
-    font-weight: 700;
-    transition: color var(--transition-speed) ease;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+    background: linear-gradient(90deg, var(--teal), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 /* ========== Botão Dark Mode ========== */
@@ -76,8 +104,8 @@ h1 {
     top: 1.25rem;
     right: 1.25rem;
     z-index: 1000;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
     border-radius: 50%;
     width: 48px;
     height: 48px;
@@ -87,7 +115,8 @@ h1 {
     cursor: pointer;
     font-size: 1.35rem;
     box-shadow: 0 2px 12px var(--shadow-card);
-    transition: all var(--transition-speed) ease;
+    backdrop-filter: blur(6px);
+    transition: all 0.2s ease;
 }
 
 .dark-mode-toggle:hover {
@@ -101,59 +130,32 @@ h1 {
 
 .dark-mode-toggle .icon {
     display: inline-block;
-    transition: transform 0.4s ease;
     line-height: 1;
 }
 
-/* ========== Botões Globais / Secundários (Ver pagamentos / Voltar) ========== */
-body > button {
-    display: block;
-    margin: 0 auto 2rem auto;
-    background-color: var(--btn-secondary-bg);
-    color: var(--text-muted);
-    border: 1px solid var(--border-color);
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all var(--transition-speed) ease;
-    box-shadow: 0 1px 2px var(--shadow-card);
-}
-
-body > button:hover {
-    background-color: var(--btn-secondary-hover);
-    color: var(--text-input);
-    border-color: #94a3b8;
-}
-
-body > button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 51, 78, 0.15);
-}
-
-/* ========== Formulário ========== */
+/* ========== Card do Formulário ========== */
 #formPagamentos {
-    background-color: var(--bg-card);
+    background: var(--panel);
     max-width: 600px;
     margin: 0 auto;
-    padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px var(--shadow-card);
-    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    padding: 44px 38px 34px;
+    border-radius: 18px;
+    border: 1px solid var(--panel-border);
+    box-shadow: 0 30px 60px var(--shadow-card);
+    backdrop-filter: blur(6px);
 }
 
+/* ========== Campos ========== */
 .campo {
-    margin-bottom: 1.5rem;
+    margin-bottom: 22px;
 }
 
 .campo label {
     display: block;
-    margin-bottom: 0.5rem;
+    font-size: 13px;
     font-weight: 600;
     color: var(--text-label);
-    font-size: 0.9rem;
-    transition: color var(--transition-speed) ease;
+    margin-bottom: 8px;
 }
 
 .campo input[type="text"],
@@ -161,28 +163,37 @@ body > button:focus {
 .campo input[type="file"],
 .campo textarea {
     width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
+    background: var(--field);
+    border: 1px solid var(--field-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    color: var(--text-white);
+    font-size: 14px;
     font-family: inherit;
-    font-size: 0.95rem;
-    color: var(--text-input);
-    background-color: var(--bg-input);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    outline: none;
+    transition: border-color 0.15s ease;
 }
 
-.campo input[type="file"] {
-    padding: 0.6rem;
-    background-color: var(--bg-card);
-    cursor: pointer;
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: #5c748b;
 }
 
 .campo input:focus,
 .campo textarea:focus {
-    outline: none;
-    border-color: #005f8a;
-    box-shadow: 0 0 0 3px rgba(0, 95, 138, 0.15);
-    background-color: var(--bg-input-focus);
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(47, 217, 184, 0.12);
+}
+
+.campo input[type="file"] {
+    cursor: pointer;
+    padding: 11px 16px;
+}
+
+/* Input date — força visual em dark */
+.campo input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7);
+    cursor: pointer;
 }
 
 .campo textarea {
@@ -193,108 +204,187 @@ body > button:focus {
 /* ========== Botões do Formulário ========== */
 #formPagamentos button {
     width: 100%;
-    padding: 0.85rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    letter-spacing: 0.5px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease;
     border: none;
 }
 
-#formPagamentos button[onclick="salvarPagamento()"] {
-    background-color: #16a34a; /* Destaque positivo */
-    color: #ffffff;
-    margin-bottom: 0.75rem;
-    margin-top: 1rem;
+/* Botão principal (Salvar / Atualizar) */
+#formPagamentos button[onclick="salvarPagamento()"],
+#formPagamentos button[onclick="atualizarPagamento()"] {
+    background: linear-gradient(90deg, var(--green), var(--green-2));
+    color: #fff;
+    margin-bottom: 10px;
+    margin-top: 8px;
+    box-shadow: 0 10px 24px rgba(34, 180, 85, 0.25);
 }
 
-#formPagamentos button[onclick="salvarPagamento()"]:hover {
-    background-color: #15803d;
+#formPagamentos button[onclick="salvarPagamento()"]:hover,
+#formPagamentos button[onclick="atualizarPagamento()"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(34, 180, 85, 0.32);
 }
 
-#formPagamentos button[onclick="salvarPagamento()"]:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.3);
-}
-
+/* Botão secundário (Limpar) */
 #formPagamentos button[onclick="limparFormulario()"] {
-    background-color: transparent;
-    color: var(--text-muted);
-    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid var(--field-border);
+    margin-bottom: 10px;
 }
 
 #formPagamentos button[onclick="limparFormulario()"]:hover {
-    background-color: var(--btn-clear-hover);
-    color: var(--text-secondary);
+    color: var(--text-white);
+    border-color: var(--text-dim);
+    background: rgba(127, 151, 173, 0.08);
 }
 
-#formPagamentos button[onclick="limparFormulario()"]:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.15);
+/* Botão de link (Ver pagamentos / Voltar) */
+#formPagamentos button[onclick*="location.href"] {
+    background: transparent;
+    color: var(--blue);
+    border: 1px solid rgba(58, 168, 255, 0.3);
+}
+
+#formPagamentos button[onclick*="location.href"]:hover {
+    border-color: var(--blue);
+    background: rgba(58, 168, 255, 0.08);
+}
+
+/* Botão solto no body (Voltar para o cadastro) */
+body > button {
+    display: block;
+    margin: 2rem auto 0;
+    background: transparent;
+    color: var(--blue);
+    border: 1px solid rgba(58, 168, 255, 0.3);
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+body > button:hover {
+    border-color: var(--blue);
+    background: rgba(58, 168, 255, 0.08);
 }
 
 /* ========== Tabela ========== */
 #tabelaPagamentos {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    border-collapse: collapse;
-    background-color: var(--bg-card);
-    border-radius: 12px;
-    overflow: hidden; /* Mantém os cantos arredondados */
-    box-shadow: 0 4px 20px var(--shadow-card);
-    font-size: 0.9rem;
-    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px var(--shadow-card);
+    font-size: 13.5px;
+    backdrop-filter: blur(6px);
 }
 
 #tabelaPagamentos thead {
-    background-color: var(--bg-thead);
-    color: #ffffff;
-    transition: background-color var(--transition-speed) ease;
+    background: linear-gradient(90deg, rgba(47, 217, 184, 0.12), rgba(58, 168, 255, 0.12));
 }
 
 #tabelaPagamentos th {
-    padding: 1rem;
+    padding: 16px 18px;
     text-align: left;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--teal);
     white-space: nowrap;
+    border-bottom: 1px solid var(--panel-border);
 }
 
 #tabelaPagamentos td {
-    padding: 1rem;
-    border-bottom: 1px solid var(--border-table);
-    color: var(--text-secondary);
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(42, 63, 86, 0.5);
+    color: var(--text-mid);
     vertical-align: middle;
-    transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
 
-/* Zebra striping */
-#tabelaPagamentos tbody tr:nth-child(even) {
-    background-color: var(--bg-table-even);
+#tabelaPagamentos tbody tr:last-child td {
+    border-bottom: none;
 }
 
-/* Hover na linha da tabela */
+/* Hover na linha */
+#tabelaPagamentos tbody tr {
+    transition: background 0.15s ease;
+}
+
 #tabelaPagamentos tbody tr:hover {
-    background-color: var(--bg-table-hover);
+    background: rgba(47, 217, 184, 0.04);
 }
 
-/* Badge / Botão de anexo na tabela */
+/* Botões de ação na tabela */
+#tabelaPagamentos button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    margin-right: 6px;
+}
+
+#tabelaPagamentos button[onclick*="editarPagamento"] {
+    background: linear-gradient(90deg, #2a7fff, #1a5fd0);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(42, 127, 255, 0.25);
+}
+
+#tabelaPagamentos button[onclick*="editarPagamento"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(42, 127, 255, 0.35);
+}
+
+#tabelaPagamentos button[onclick*="excluirPagamento"] {
+    background: linear-gradient(90deg, var(--red), var(--red-2));
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(229, 69, 69, 0.25);
+}
+
+#tabelaPagamentos button[onclick*="excluirPagamento"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(229, 69, 69, 0.35);
+}
+
+/* Link de anexo na tabela */
 #tabelaPagamentos a {
     display: inline-block;
-    padding: 0.4rem 0.8rem;
-    background-color: #0ea5e9;
-    color: #ffffff;
+    padding: 7px 14px;
+    background: linear-gradient(90deg, rgba(58, 168, 255, 0.15), rgba(47, 217, 184, 0.15));
+    color: var(--blue);
     text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
-    text-align: center;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    border: 1px solid rgba(58, 168, 255, 0.25);
+    transition: all 0.15s ease;
 }
 
 #tabelaPagamentos a:hover {
-    background-color: #0284c7;
+    background: rgba(58, 168, 255, 0.22);
+    border-color: var(--blue);
 }
 
 /* ========== Responsivo ========== */
@@ -303,11 +393,25 @@ body > button:focus {
         padding: 1rem;
     }
 
-    #formPagamentos {
-        padding: 1.5rem;
+    h1 {
+        font-size: 24px;
     }
 
-    /* Permite rolagem horizontal na tabela sem quebrar o layout */
+    #formPagamentos {
+        padding: 28px 20px 24px;
+    }
+
+    .nav-bar {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .nav-bar a {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    /* Scroll horizontal na tabela */
     #tabelaPagamentos {
         display: block;
         overflow-x: auto;
