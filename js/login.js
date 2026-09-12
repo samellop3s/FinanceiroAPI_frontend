@@ -1,9 +1,14 @@
 const URL_API = "https://financeiro-api-lopes-h7hcgub8f3aggmdn.centralus-01.azurewebsites.net/api/Auth";
 
+// Usuário/senha temporários, só pra testar enquanto a API está indisponível.
+// IMPORTANTE: remover isso quando a API voltar a funcionar de forma estável.
+const MODO_TEMPORARIO_ATIVO = true;
+const USUARIO_TEMPORARIO = "admin";
+const SENHA_TEMPORARIA = "teste123";
+
 async function fazerLogin() {
     const nomeUsuario = document.getElementById("nomeUsuario").value;
     const senha = document.getElementById("senha").value;
-    const mensagemErro = document.getElementById("mensagemErro");
     const botao = document.querySelector(".btn");
 
     esconderErro();
@@ -30,13 +35,19 @@ async function fazerLogin() {
         }
 
         const dados = await resposta.json();
-
         sessionStorage.setItem("tokenAcesso", dados.token);
         sessionStorage.setItem("nomeUsuario", dados.nomeUsuario);
-
-        window.location.href = "listagem.html";
+        window.location.href = "cadastro.html";
 
     } catch (erro) {
+        // Se a API estiver fora do ar e o modo temporário estiver ativo, permite entrar mesmo assim.
+        if (MODO_TEMPORARIO_ATIVO && nomeUsuario === USUARIO_TEMPORARIO && senha === SENHA_TEMPORARIA) {
+            sessionStorage.setItem("tokenAcesso", "token-temporario-sem-api");
+            sessionStorage.setItem("nomeUsuario", nomeUsuario);
+            window.location.href = "cadastro.html";
+            return;
+        }
+
         mostrarErro("Não foi possível conectar à API.");
         console.error(erro);
     } finally {
@@ -62,7 +73,6 @@ function alternarVisibilidadeSenha() {
     campoSenha.type = campoSenha.type === "password" ? "text" : "password";
 }
 
-// Permite logar apertando Enter em qualquer campo do formulário
 document.getElementById("formLogin").addEventListener("keydown", function (evento) {
     if (evento.key === "Enter") {
         evento.preventDefault();

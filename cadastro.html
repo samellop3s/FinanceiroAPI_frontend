@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Editar pagamento - Financeiro</title>
+    <title>Cadastro de pagamento - Financeiro</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         <a href="listagem.html">Listagem</a>
     </nav>
 
-    <h1>Editar pagamento</h1>
+    <h1>Cadastro de pagamento</h1>
 
     <form id="formPagamentos">
         <div class="campo">
@@ -57,12 +57,12 @@
             <label for="anexo">Anexar arquivo:</label>
             <input type="file" id="anexo" name="anexo">
         </div>
-        <button type="button" onclick="atualizarPagamento()">Atualizar</button>
+        <button type="button" onclick="salvarPagamento()">Salvar</button>
         <button type="button" onclick="limparFormulario()">Limpar</button><br><br>
         <button type="button" onclick="window.location.href='listagem.html'">Ver pagamentos cadastrados</button>
     </form>
 
-    <script src="js/editar.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
